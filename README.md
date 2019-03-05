@@ -16,6 +16,8 @@ For a short overview:
   now. This means that the AI will actually declare war on you as well, even if you're
   slightly stronger. (Although they still won't attack huge alliance blocks that they can't beat)
   
+- Rivals will now subsidize weaker nations that are opposed to you
+  
 - Armies with strong per-unit combat ability will now actually challenge armies that are
   larger in numbers (1.7 ratio to 0.9)
   
