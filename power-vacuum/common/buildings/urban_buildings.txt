@@ -1,0 +1,1608 @@
+################################################
+# Urban buildings
+################################################
+
+# Religious
+# Temple
+# Great Temple
+
+# Education
+# Small University
+# Medium Modern University
+# Large University
+
+# Trade
+# Marketplace
+# Merchant Guild
+# Trade depot
+# Custom House
+
+# Financial
+# Bank
+# Stock Exchange
+
+# Warehouse
+# Warehouse
+# Warehouse district
+
+# (Urban) Production
+# Workshop
+# Corporation Guild
+# Manufactory
+# Factory
+# Steam Powered Factory
+
+# Art Buildings
+# Art Academy
+# Library
+# Opera
+
+#############
+# Religious #
+#############
+
+temple = {
+	cost = 5
+	time =  12
+	
+	trigger = {
+		OR = {
+			has_building = temple # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_temple = yes
+			AND = {
+				can_keep_temple = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = temple # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_missionary_strength = 0.005
+		local_unrest = -2
+	}
+	ai_will_do = {
+		factor = 25
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_tax = 5
+		}
+		modifier = {
+			factor = 1.5
+			base_tax = 7
+		}
+
+		modifier = {
+			factor = 1.5
+			base_production = 1
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 2
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 3
+		}
+
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+temple_heathen = {
+	cost = 50
+	time =  12
+	
+	trigger = {
+		OR = {
+			has_building = temple_heathen # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_temple_heathen = yes
+			AND = {
+				can_keep_temple_heathen = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = temple_heathen # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_missionary_strength = -0.05
+		local_unrest = -2
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+
+
+great_temple = {
+	#cost = 300
+	cost = 9999
+	time =  24
+	
+	#make_obsolete = temple
+	
+	trigger = {
+		OR = {
+			has_building = great_temple # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_great_temple = yes
+			AND = {
+				can_keep_great_temple = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = great_temple # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		prestige = 0.15
+		global_missionary_strength = 0.005
+		tolerance_own = 0.1
+		papal_influence = 0.10
+		local_unrest = -3
+		#local_missionary_strength = 0.025
+	}
+	ai_will_do = {
+		factor = 0
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.5
+			base_production = 4
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 8
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 12
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+#############
+# Education #
+#############
+
+small_university = {
+	cost = 50
+	time =  24
+	
+	trigger = {
+		OR = {
+			has_building = small_university # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_small_university = yes
+			AND = {
+				can_keep_small_university = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = small_university # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_unrest = 1
+		local_autonomy = 0.05
+	}
+	ai_will_do = {
+		factor = 250
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+	}
+}
+
+medium_university = {
+	#cost = 750
+	cost = 125
+	time =  24
+	
+	#make_obsolete = small_university
+	
+	trigger = {
+		OR = {
+			has_building = medium_university # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_medium_university = yes
+			AND = {
+				can_keep_medium_university = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = medium_university # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_unrest = 2
+		local_autonomy = 0.10
+	}
+	
+	ai_will_do = {
+		factor = 625
+	}
+}
+
+big_university = {
+	#cost = 1350
+	cost = 200
+	time =  24
+	
+	#make_obsolete = medium_university
+	
+	trigger = {
+		OR = {
+			has_building = big_university # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_big_university = yes
+			AND = {
+				can_keep_big_university = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = big_university # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_unrest = 3
+		local_autonomy = 0.20
+	}
+	
+	ai_will_do = {
+		factor = 1000
+	}
+}
+
+
+#########
+# Trade #
+#########
+
+marketplace = {
+	cost = 10
+	time =  12
+	
+	modifier = {
+		province_trade_power_value = 0.5
+		province_trade_power_modifier = 0.15
+		trade_value = 0.1
+	}
+	
+	trigger = {
+		OR = {
+			has_building = marketplace # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_marketplace = yes
+			AND = {
+				can_keep_marketplace = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = marketplace # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	ai_will_do = {
+		factor = 60
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 3
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 7
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 10
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		
+		modifier = {
+			factor = 1.25
+			province_trade_power = 6
+		}
+		modifier = {
+			factor = 1.5
+			province_trade_power = 10
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_production = 4
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 5
+		}
+	}
+}
+
+merchant_guild = {
+	#cost = 375
+	cost = 40
+	time =  12
+	
+	#make_obsolete = marketplace
+	
+	trigger = {
+		OR = {
+			has_building = merchant_guild # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_merchant_guild = yes
+			AND = {
+				can_keep_merchant_guild = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = merchant_guild # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#province_trade_power_value = 1.5
+		#province_trade_power_modifier = 0.20
+		trade_value = 0.25
+	}
+	
+	ai_will_do = {
+		factor = 240
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 3
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 7
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 10
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		
+		modifier = {
+			factor = 1.25
+			province_trade_power = 6
+		}
+		modifier = {
+			factor = 1.5
+			province_trade_power = 10
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 8
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 10
+		}
+	}
+}
+
+trade_depot = {
+	#cost = 675
+	cost = 100
+	time =  12
+	
+	#make_obsolete = merchant_guild
+	
+	trigger = {
+		OR = {
+			has_building = trade_depot # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_trade_depot = yes
+			AND = {
+				can_keep_trade_depot = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = trade_depot # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		province_trade_power_value = 4
+		province_trade_power_modifier = 0.25
+		trade_value = 0.5
+	}
+	
+	ai_will_do = {
+		factor = 600
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 3
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 7
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 10
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		modifier = {
+			factor = 1.25
+			province_trade_power = 6
+		}
+		modifier = {
+			factor = 1.5
+			province_trade_power = 10
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 12
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 15
+		}
+	}
+}
+
+customs_house = {
+	#cost = 1125
+	cost = 150
+	time =  12
+	
+	#make_obsolete = trade_depot
+	
+	trigger = {
+		OR = {
+			has_building = customs_house # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_customs_house = yes
+			AND = {
+				can_keep_customs_house = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = customs_house # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		province_trade_power_value = 8
+		province_trade_power_modifier = 0.3
+		trade_value = 1
+	}
+	
+	ai_will_do = {
+		factor = 900
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 3
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 7
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 10
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		
+		modifier = {
+			factor = 1.5
+			province_trade_power = 10
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 16
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 20
+		}
+	}
+}
+
+#############
+# Financial #
+#############
+
+bank = {
+	cost = 100
+	time =  12
+	
+	trigger = {
+		OR = {
+			has_building = bank # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_bank = yes
+			AND = {
+				can_keep_bank = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = bank # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		province_trade_power_modifier = 0.15
+		trade_value = 1
+		tax_income = 1
+		local_production_efficiency = 0.1
+	}
+	
+	ai_will_do = {
+		factor = 500
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 3
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 7
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 10
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 16
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 20
+		}
+	}
+}
+
+stock_exchange = {
+	#cost = 3000
+	cost = 500
+	time =  12
+	
+	trigger = {
+		OR = {
+			has_building = stock_exchange # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_stock_exchange = yes
+			AND = {
+				can_keep_stock_exchange = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = stock_exchange # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#province_trade_power_modifier = 0.20
+		trade_value = 2
+		tax_income = 4
+		local_production_efficiency = 0.2
+	}
+	
+	ai_will_do = {
+		factor = 5000
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 3
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 7
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 10
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		
+		modifier = {
+			factor = 0.5
+			NOT = { province_trade_power = 1 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { province_trade_power = 3 }
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { province_trade_power = 6 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { province_trade_power = 10 }
+		}
+		
+		modifier = {
+			factor = 0.25
+			NOT = { base_production = 4 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { base_production = 8 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_production = 12 }
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 16
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 20
+		}
+	}
+	one_per_country = yes
+}
+
+#############
+# Warehouse #
+#############
+
+warehouse = {
+	cost = 15
+	time =  24
+	
+	trigger = {
+		OR = {
+			has_building = warehouse # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_warehouse = yes
+			AND = {
+				can_keep_warehouse = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = warehouse # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_production_efficiency = 0.1
+		province_trade_power_modifier = 0.1
+	}
+	
+	ai_will_do = {
+		factor = 50
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_tax = 15
+		}
+		modifier = {
+			factor = 1.5
+			base_tax = 21
+		}
+		
+		modifier = {
+			factor = 1.5
+			base_production = 1
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 3
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 7
+		}
+		
+		modifier = {
+			factor = 2
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 3
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 4
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		
+		modifier = {
+			factor = 2
+			has_province_modifier = "minor_center_of_production"
+		}
+		modifier = {
+			factor = 3
+			has_province_modifier = "important_center_of_production"
+		}
+		modifier = {
+			factor = 4
+			has_province_modifier = "major_center_of_production"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "dominant_center_of_production"
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+warehouse_district = {
+	#cost = 400
+	cost = 75
+	time =  24
+	
+	#make_obsolete = warehouse
+	
+	trigger = {
+		OR = {
+			has_building = warehouse_district # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_warehouse_district = yes
+			AND = {
+				can_keep_warehouse_district = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = warehouse_district # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_production_efficiency = 0.2
+		province_trade_power_modifier = 0.2
+	}
+	
+	ai_will_do = {
+		factor = 375
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_tax = 30
+		}
+		modifier = {
+			factor = 1.5
+			base_tax = 42
+		}
+		
+		modifier = {
+			factor = 1.5
+			base_production = 2
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 6
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 14
+		}
+		
+		modifier = {
+			factor = 2
+			has_province_modifier = "minor_center_of_trade"
+		}
+		modifier = {
+			factor = 3
+			has_province_modifier = "important_center_of_trade"
+		}
+		modifier = {
+			factor = 4
+			has_province_modifier = "major_center_of_trade"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "dominant_center_of_trade"
+		}
+		
+		modifier = {
+			factor = 2
+			has_province_modifier = "minor_center_of_production"
+		}
+		modifier = {
+			factor = 3
+			has_province_modifier = "important_center_of_production"
+		}
+		modifier = {
+			factor = 4
+			has_province_modifier = "major_center_of_production"
+		}
+		modifier = {
+			factor = 5
+			has_province_modifier = "dominant_center_of_production"
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+##############
+# Production #
+##############
+
+workshop = { ### Urban Production power +1
+	cost = 15
+	time =  24
+	
+	trigger = {
+		OR = {
+			has_building = workshop # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_workshop = yes
+			AND = {
+				can_keep_workshop = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = workshop # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 0.05
+		trade_goods_size_modifier = 0.1
+	}
+	ai_will_do = {
+		factor = 75
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 5
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 6
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+corporation_guild = { ### Urban Production Power +1.5
+	#cost = 500
+	cost = 40
+	time =  24
+	
+	#make_obsolete = workshop
+	
+	trigger = {
+		OR = {
+			has_building = corporation_guild # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_corporation_guild = yes
+			AND = {
+				can_keep_corporation_guild = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = corporation_guild # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 0.1
+		trade_goods_size_modifier = 0.20
+	}
+	ai_will_do = {
+		factor = 200
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_production = 9
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 11
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+urban_manufactory = {	### Urban Production Power +2
+	#cost = 900
+	cost = 100
+	time =  24
+	
+	#make_obsolete = corporation_guild
+	
+	trigger = {
+		OR = {
+			has_building = urban_manufactory # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_urban_manufactory = yes
+			AND = {
+				can_keep_manufactory = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = urban_manufactory # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 0.2
+		trade_goods_size_modifier = 0.30
+	}
+	ai_will_do = {
+		factor = 500
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_production = 13
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 16
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+factory = {	### Urban Production Power +3
+	#cost = 1500
+	cost = 150
+	time =  24
+	
+	#make_obsolete = urban_manufactory
+	
+	trigger = {
+		OR = {
+			has_building = factory # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_factory = yes
+			AND = {
+				can_keep_factory = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = factory # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 0.3
+		trade_goods_size_modifier = 0.40
+	}
+	ai_will_do = {
+		factor = 750
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+
+		modifier = {
+			factor = 1.25
+			base_production = 17
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 21
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+steam_powered_factory = { ### Urban Production Power +5
+	#cost = 2300
+	cost = 300
+	time =  24
+	
+	#make_obsolete = factory
+	
+	trigger = {
+		OR = {
+			has_building = steam_powered_factory # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_steam_powered_factory = yes
+			AND = {
+				can_keep_steam_powered_factory = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = steam_powered_factory # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 4
+		trade_goods_size_modifier = 2.50
+	}
+	ai_will_do = {
+		factor = 3000
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 21
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 26
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+##############
+# ART #
+##############
+
+art_corporation = {
+	cost = 25
+	time =  36
+	trigger = {
+		OR = {
+			has_building = art_corporation # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_art_corporation = yes
+			AND = {
+				can_keep_art_corporation = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = art_corporation # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#global_tax_income = -2.5
+		prestige = 0.01
+	}
+	ai_will_do = {
+		factor = 100
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+	}
+	onmap = yes
+	category = 7
+}
+
+fine_arts_academy = {
+	cost = 75
+	time =  24
+	
+	#make_obsolete = art_corporation
+	
+	trigger = {
+		OR = {
+			has_building = fine_arts_academy # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_fine_arts_academy = yes
+			AND = {
+				can_keep_fine_arts_academy = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = fine_arts_academy # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		prestige = 0.02
+		#global_tax_income = -5
+	}
+	
+	ai_will_do = {
+		factor = 375
+	}
+}
+
+opera = {
+	cost = 400
+	time =  24
+	
+	#make_obsolete = fine_arts_academy
+	
+	trigger = {
+		OR = {
+			has_building = opera # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_opera = yes
+			AND = {
+				can_keep_opera = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = opera # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		prestige = 0.05
+		#global_tax_income = -10
+	}
+	
+	ai_will_do = {
+		factor = 2000
+	}
+}

@@ -1,0 +1,502 @@
+############################
+# Infrastructure Buildings #
+############################
+
+# Urban Infrastructure
+# Town Hall
+# Urban Infrastructure 1
+# Urban Infrastructure 2
+# Urban Infrastructure 3
+# Urban Infrastructure 4
+# Urban Infrastructure 5
+
+########################
+# Urban Infrastructure #
+########################
+
+town_hall = {
+	cost = 15
+	time =  36
+	
+	modifier = {
+		local_unrest = -2
+		supply_limit = 0.1
+		garrison_growth = 0.05
+	}
+	
+	trigger = {
+		OR = {
+			has_building = town_hall # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_town_hall = yes
+			AND = {
+				can_keep_town_hall = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = town_hall # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	# custom_tooltip = urban_infrastructure_1_tooltip
+	
+	ai_will_do = {
+		factor = 150
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_production = 4
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 5
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+urban_infrastructure_1 = {
+	#cost = 375
+	cost = 25
+	time =  36
+	
+	#make_obsolete = town_hall
+	
+	trigger = {
+		OR = {
+			has_building = urban_infrastructure_1 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_urban_infrastructure_1 = yes
+			AND = {
+				can_keep_urban_infrastructure_1 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = urban_infrastructure_1 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_unrest = -3
+		supply_limit = 0.25
+		garrison_growth = 0.1
+	}
+	
+	# custom_tooltip = urban_infrastructure_1_tooltip
+	
+	ai_will_do = {
+		factor = 250
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_production = 6
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 8
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+urban_infrastructure_2 = {
+	#cost = 675
+	cost = 50
+	time =  36
+	
+	#make_obsolete = urban_infrastructure_1
+	
+	trigger = {
+		OR = {
+			has_building = urban_infrastructure_2 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_urban_infrastructure_2 = yes
+			AND = {
+				can_keep_urban_infrastructure_2 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = urban_infrastructure_2 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#	local_production_efficiency = 0.025
+		
+		local_unrest = -4
+		supply_limit = 0.5
+		garrison_growth = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 500
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			base_production = 9
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 11
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+urban_infrastructure_3 = {
+	#cost = 1125
+	cost = 75
+	time =  36
+	
+	#make_obsolete = urban_infrastructure_2
+	
+	trigger = {
+		OR = {
+			has_building = urban_infrastructure_3 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_urban_infrastructure_3 = yes
+			AND = {
+				can_keep_urban_infrastructure_3 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = urban_infrastructure_3 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#	local_production_efficiency = 0.050
+		
+		local_unrest = -5
+		supply_limit = 1
+		garrison_growth = 0.2
+	}
+	
+	ai_will_do = {
+		factor = 750
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 13
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 16
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+urban_infrastructure_4 = {
+	#cost = 1725
+	cost = 200
+	time =  36
+	
+	#make_obsolete = urban_infrastructure_3
+	
+	trigger = {
+		OR = {
+			has_building = urban_infrastructure_4 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_urban_infrastructure_4 = yes
+			AND = {
+				can_keep_urban_infrastructure_4 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = urban_infrastructure_4 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#	local_production_efficiency = 0.075
+		
+		local_unrest = -6
+		supply_limit = 1.5
+		garrison_growth = 0.25
+	}
+	
+	ai_will_do = {
+		factor = 2000
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 17
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 21
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}
+
+urban_infrastructure_5 = {
+	#cost = 2625
+	cost = 400
+	time =  36
+	
+	#make_obsolete = urban_infrastructure_4
+	
+	trigger = {
+		OR = {
+			has_building = urban_infrastructure_5 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_urban_infrastructure_5 = yes
+			AND = {
+				can_keep_urban_infrastructure_5 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = urban_infrastructure_5 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		#	local_production_efficiency = 0.10
+		
+		local_unrest = -8
+		supply_limit = 2
+		garrison_growth = 0.3
+	}
+	
+	ai_will_do = {
+		factor = 4000
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 0.25
+			NOT = { base_production = 6 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { base_production = 11 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { base_production = 16 }
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 21
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 26
+		}
+		
+		modifier = {
+			factor = 0.8
+			local_autonomy = 20
+		}
+		modifier = {
+			factor = 0.7
+			local_autonomy = 40
+		}
+		modifier = {
+			factor = 0.6
+			local_autonomy = 60
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 80
+		}
+	}
+}

@@ -1,0 +1,788 @@
+###################
+# Naval Buildings #
+###################
+
+# Harbour Infrastructure -> Few Forcelimit and Sailors
+# Fishing harbour
+# Commercial harbour
+# Great Trade Port
+# Port Warehouse
+# Harbour and Lighthouse
+
+
+# Shipbuilding -> Huge Forcelimit and Sailors
+# Shipwright (galleys)
+# Shipyards
+# Naval Arsenal
+# Fortified Naval Base
+
+##########################
+# Trading/Civilian Harbour Infrastructure
+##########################
+
+# Fishing harbour
+harbour_infrastructure_1 = {
+	cost = 5
+	time =  12
+	
+	trigger = {
+		OR = {
+			has_building = harbour_infrastructure_1 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_harbour_infrastructure_1 = yes
+			AND = {
+				can_keep_harbour_infrastructure_1 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = harbour_infrastructure_1 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		naval_forcelimit = 2
+		local_sailors_modifier = 0.25
+		
+		# Bonuses to counterbalance starting penalties
+		
+		# Bonuses of Coastal provinces
+		supply_limit_modifier = 0.10
+		province_trade_power_modifier = 0.025
+	}
+	
+	ai_will_do = {
+		factor = 50
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 4
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 5
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+		}
+		modifier = {
+			factor = 1.25
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 1 }
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 3 }
+		}
+		modifier = {
+			factor = 1.75
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 6 }
+		}
+		modifier = {
+			factor = 2
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 10 }
+		}
+	}
+}
+
+# Trading harbour
+harbour_infrastructure_2 = {
+	#cost = 375
+	cost = 15
+	time =  36
+	
+	#make_obsolete = harbour_infrastructure_1
+	
+	trigger = {
+		OR = {
+			has_building = harbour_infrastructure_2 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_harbour_infrastructure_2 = yes
+			AND = {
+				can_keep_harbour_infrastructure_2 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = harbour_infrastructure_2 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		naval_forcelimit = 3
+		local_sailors_modifier = 0.50
+		
+		# Bonuses to counterbalance starting penalties
+		
+		# Bonuses of Coastal provinces
+		supply_limit_modifier = 0.25
+		province_trade_power_modifier = 0.10
+		province_trade_power_value = 0.5
+	}
+	
+	ai_will_do = {
+		factor = 150
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 5
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 6
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+		}
+		modifier = {
+			factor = 1.25
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 1 }
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 3 }
+		}
+		modifier = {
+			factor = 1.75
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 6 }
+		}
+		modifier = {
+			factor = 2
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 10 }
+		}
+	}
+}
+
+# Huge Trading Harbour
+harbour_infrastructure_3 = {
+	#cost = 675
+	cost = 50
+	time =  36
+	
+	#make_obsolete = harbour_infrastructure_2
+	
+	trigger = {
+		OR = {
+			has_building = harbour_infrastructure_3 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_harbour_infrastructure_3 = yes
+			AND = {
+				can_keep_harbour_infrastructure_3 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = harbour_infrastructure_3 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		naval_forcelimit = 4
+		local_sailors_modifier = 0.75
+		
+		# Bonuses to counterbalance starting penalties
+		
+		# Bonuses of Coastal provinces
+		supply_limit_modifier = 0.40
+		province_trade_power_modifier = 0.20
+		province_trade_power_value = 1
+	}
+	
+	ai_will_do = {
+		factor = 500
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 9
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 11
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+		}
+		modifier = {
+			factor = 1.25
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 3 }
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 6 }
+		}
+		modifier = {
+			factor = 1.75
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 10 }
+		}
+		modifier = {
+			factor = 2
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 15 }
+		}
+	}
+}
+
+# Great Warehouse
+harbour_infrastructure_4 = {
+	#cost = 1125
+	cost = 100
+	time =  36
+	
+	#make_obsolete = harbour_infrastructure_3
+	
+	trigger = {
+		OR = {
+			has_building = harbour_infrastructure_4 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_harbour_infrastructure_4 = yes
+			AND = {
+				can_keep_harbour_infrastructure_4 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = harbour_infrastructure_4 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		naval_forcelimit = 5
+		local_sailors_modifier = 1
+		
+		# Bonuses to counterbalance starting penalties
+		
+		# Bonuses of Coastal provinces
+		supply_limit_modifier = 0.55
+		province_trade_power_modifier = 0.30
+		province_trade_power_value = 2
+	}
+	
+	ai_will_do = {
+		factor = 1000
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 13
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 16
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+		}
+		modifier = {
+			factor = 1.25
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 6 }
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 10 }
+		}
+		modifier = {
+			factor = 1.75
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 15 }
+		}
+		modifier = {
+			factor = 2
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 21 }
+		}
+	}
+}
+
+# Big Lighthouse
+harbour_infrastructure_5 = {
+	#cost = 1500
+	cost = 200
+	time =  36
+	
+	#make_obsolete = harbour_infrastructure_4
+	
+	trigger = {
+		OR = {
+			has_building = harbour_infrastructure_5 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_harbour_infrastructure_5 = yes
+			AND = {
+				can_keep_harbour_infrastructure_5 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = harbour_infrastructure_5 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		naval_forcelimit = 6
+		local_sailors_modifier = 1.5
+		
+		# Bonuses to counterbalance starting penalties
+		
+		# Bonuses of Coastal provinces
+		supply_limit_modifier = 0.75
+		province_trade_power_modifier = 0.40
+		province_trade_power_value = 3
+	}
+	
+	ai_will_do = {
+		factor = 2000
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 5
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			base_production = 13
+		}
+		modifier = {
+			factor = 1.5
+			base_production = 16
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+		}
+		modifier = {
+			factor = 1.25
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 6 }
+		}
+		modifier = {
+			factor = 1.5
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 10 }
+		}
+		modifier = {
+			factor = 1.75
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 15 }
+		}
+		modifier = {
+			factor = 2
+			has_province_flag = CE_from_oversea
+			check_variable = { which = "communication_importance" value = 21 }
+		}
+	}
+}
+
+################
+# Military Harbour
+################
+
+military_harbour_1 = {
+	cost = 20
+	time =  36
+	
+	trigger = {
+		OR = {
+			has_building = military_harbour_1 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_military_harbour_1 = yes
+			AND = {
+				can_keep_military_harbour_1 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = military_harbour_1 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_ship_repair = 0.30
+		ship_recruit_speed = -0.35
+		naval_forcelimit = 5
+		local_sailors = 250
+		local_defensiveness = 0.025
+	}
+	
+	ai_will_do = {
+		factor = 100
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			NOT = {
+				owner = { monthly_income = 5 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				owner = { monthly_income = 10 }
+			}
+		}
+		
+		modifier = {
+			factor = 2
+			NOT = {
+				owner = {
+					num_of_owned_provinces_with = {
+						value = 1
+						OR = {
+							has_building = military_harbour_1
+							has_building = military_harbour_2
+							has_building = military_harbour_3
+							has_building = military_harbour_4
+						}
+					}
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 2
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 5
+			has_province_flag = has_small_natural_harbour
+		}
+		modifier = {
+			factor = 10
+			has_province_flag = has_great_natural_harbour
+		}
+	}
+}
+
+military_harbour_2 = {
+	#cost = 500
+	cost = 50
+	time =  36
+	
+	#make_obsolete = military_harbour_1
+	
+	trigger = {
+		OR = {
+			has_building = military_harbour_2 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_military_harbour_2 = yes
+			AND = {
+				can_keep_military_harbour_2 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = military_harbour_2 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_ship_repair = 0.60
+		ship_recruit_speed = -0.60
+		naval_forcelimit = 10
+		local_sailors = 500
+		local_defensiveness = 0.05
+	}
+	
+	ai_will_do = {
+		factor = 250
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			NOT = {
+				owner = { monthly_income = 10 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				owner = { monthly_income = 20 }
+			}
+		}
+		
+		modifier = {
+			factor = 2
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 5
+			has_province_flag = has_small_natural_harbour
+		}
+		modifier = {
+			factor = 10
+			has_province_flag = has_great_natural_harbour
+		}
+	}
+}
+
+military_harbour_3 = {
+	#cost = 1000
+	cost = 150
+	time =  36
+	
+	#make_obsolete = military_harbour_2
+	
+	trigger = {
+		OR = {
+			has_building = military_harbour_3 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_military_harbour_3 = yes
+			AND = {
+				can_keep_military_harbour_3 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = military_harbour_3 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_ship_repair = 1.0
+		ship_recruit_speed = -0.85
+		naval_forcelimit = 15
+		local_sailors = 750
+		local_defensiveness = 0.10
+	}
+	
+	ai_will_do = {
+		factor = 750
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			NOT = {
+				owner = { monthly_income = 15 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				owner = { monthly_income = 30 }
+			}
+		}
+		
+		
+		modifier = {
+			factor = 2
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 5
+			has_province_flag = has_small_natural_harbour
+		}
+		modifier = {
+			factor = 10
+			has_province_flag = has_great_natural_harbour
+		}
+	}
+}
+
+military_harbour_4 = {
+	cost = 300
+	time =  36
+	
+	#make_obsolete = military_harbour_3
+	
+	trigger = {
+		OR = {
+			has_building = military_harbour_4 # has_building = itself so that building never removes itself unless it fails the can_keep
+			owner = { ai = no }	
+		}
+		OR = {
+			can_build_military_harbour_4 = yes
+			AND = {
+				can_keep_military_harbour_4 = yes # Redundant can_keep so that buildings still get removed if they are disqualifed
+				has_building = military_harbour_4 # has_building = itself so that building never removes itself unless it fails the can_keep
+			}
+		}
+	}
+	
+	modifier = {
+		local_ship_repair = 1.40
+		ship_recruit_speed = -1.10
+		naval_forcelimit = 20
+		local_sailors = 1000
+		local_defensiveness = 0.20
+	}
+	
+	ai_will_do = {
+		factor = 1500
+		
+		modifier = {
+			factor = 0
+			OR = {
+				owner = { is_at_war = yes }
+				owner = { is_bankrupt = yes }
+				OR = {
+					AND = {
+						is_capital = yes
+						owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1 } } }
+					}
+					owner = { NOT = { check_variable = { which = "wellbeing_composite" value = 1.05 } } }
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 0.5
+			NOT = {
+				owner = { monthly_income = 15 }
+			}
+		}
+		
+		modifier = {
+			factor = 2
+			is_capital = yes
+		}
+		
+		modifier = {
+			factor = 5
+			has_province_flag = has_small_natural_harbour
+		}
+		modifier = {
+			factor = 10
+			has_province_flag = has_great_natural_harbour
+		}
+	}
+}
