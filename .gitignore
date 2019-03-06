@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!power-vacuum.mod
+!README.md
+!power-vacuum
+!LICENSE.md
+
+# ...even if they are in subdirectories
+!*/
